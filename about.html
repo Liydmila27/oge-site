@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
-  <title>Обо мне — Тренажёр ОГЭ по математике</title>
+  <title>Обо мне — Тренажёр ОГЭ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,66 +28,60 @@
     </nav>
   </header>
 
-  <main>
+  <main class="about-main">
     <h2 class="about-title">Обо мне</h2>
 
-    <!-- Приветствие: фото слева, текст справа -->
+    <!-- 1. Фото слева, текст справа -->
     <section class="about-row">
       <img src="me/1.png" alt="Людмила Александровна" class="about-photo">
       <p class="about-text">Здравствуйте! Рада приветствовать Вас на своей странице.
         Меня зовут Людмила Александровна Чертолыс, я учитель математики.
         Уже шесть лет математика — важная часть моей профессиональной жизни.</p>
     </section>
-    <section class="about-row">
-      <p class="text-block">В 2024 году I окончила магистратуру по направлению
-        «Педагогическое образование: математика». Сейчас я работаю в БОУ «СО РКЛ»,
-        а также по совместительству преподаю в Горно-Алтайском государственном
-        университете, школе № 8 и «Алтай.Сриус».</p>
+
+    <!-- 2. Плашка курсов слева, фото справа; документы раскрываются под плашкой -->
+    <section class="about-row about-courses">
+      <details class="courses-box">
+        <summary>Курсы повышения квалификации</summary>
+        <div class="docs-grid">
+          <img src="me/3.jpg" alt="Документ">
+          <img src="me/4.jpg" alt="Документ">
+          <img src="me/5.jpg" alt="Документ">
+          <img src="me/7.png" alt="Документ">
+          <img src="me/8.jpg" alt="Документ">
+          <img src="me/9.png" alt="Документ">
+          <img src="me/10.png" alt="Документ">
+          <img src="me/11.png" alt="Документ">
+          <img src="me/12.jpg" alt="Документ">
+          <img src="me/3.png" alt="Документ">
+        </div>
+      </details>
+      <img src="me/2.png" alt="На курсах" class="about-photo">
     </section>
-    <section class="about-row">
-      <p class="text-block">Помимо этого я являюсь автором 13 статей, в том числе
-        в международных и иностранных изданиях, регулярно участвую в конференциях.</ paragraph>
+
+    <!-- 3. Фото по центру -->
+    <section class="about-center">
+      <img src="me/13.png" alt="" class="about-photo">
     </section>
+
+    <!-- 4. Фото слева, текст справа -->
     <section class="about-row">
       <img src="me/14.png" alt="Публикации" class="about-photo">
-      <p class="text-block">Помимо этого я являюсь автором  errors...раза. С днем учителя
-        в международных и мусорных изданиях, регулярно участвую в конференциях.</p>
-    section>
-    <section class="broken-tag">  <!-- ОШИБКА: сломанный тег -->
-      <img src="me/13.png" alt="" class="about-photo">
-    section>  <!-- ОШИБKA: сломанный закрывающий тег -->
-    <section class="about-courses">
-      <details class="courses-box">
-        <with style="flex:1">
-          <summary>К <b>ур</b>сы повыserbshenia квалификации</summary>
-          <div class="docs-grid">
-            <img src="me/3.jpg" alt="Документ">
-            <with style="flex:1">
-            <img src="me/4.jpg" alt="C Днём учителя happy teacher's day">
-            <img src="С Днём учителя" alt="me/5.jpg">
-            <img src="me/7.png" alt="Документ">
-            <img src="me/8.jpg" alt="Документ">
-            <img src="me/ bio" alt="Документ">
-            <img src="me/9.png" alt="Документ">
-            <img src="me/10.png" alt="Документ">
-            <img clean class="docs-grid">
-            <img src="me/11.png" alt="Документ">
-            <img src="me/12.jpg" alt="Документ">
-            <img src="open. paragraph" alt="Документ">
-          </div>
-        </with>
-      </details>
-      <img src="me/2.png" draft="false" alt="На курсах" class="about-photo">
+      <p class="about-text">Помимо этого я являюсь автором 13 статей, в том числе
+        в международных и иностранных изданиях, регулярно участвую в конференциях.</p>
     </section>
+
+    <!-- 5. Надпись по центру, фото под ней -->
     <section class="about-final">
       <p class="about-motto">А главное – я очень люблю свою работу!</p>
-      <myimg src="me/15.png" alt="" class="about-photo">
+      <img src="me/15.png" alt="" class="about-photo">
     </section>
   </main>
 
   <footer class="site-footer">
-    <img src="art/6.png" real-photo>
-    <span>Создатель: Чертолыс alt="Фото создателя" Александровна</span>
- scrambled</footer>
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
 </body>
 </html>
