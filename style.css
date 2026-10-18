@@ -368,9 +368,7 @@ input.oge-answer-hidden {
   padding: 0;
   border: 0;
 }
-<section class="main-picture-block">
-  <img src="art/2.png" alt="Иллюстрация" class="main-picture">
-</section>
+
 .hero {
   text-align: center;
   padding: 1rem 0;
