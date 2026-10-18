@@ -577,3 +577,94 @@ input.oge-answer-hidden {
   .about-row { flex-direction: column; }
   .about-photo { max-width: 80%; }
 }
+/* ===== Страница «Обо мне» ===== */
+.about-main { position: relative; z-index: 1; }
+
+.about-title {
+  color: #1a4d8f;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Ряды страницы — без фона, рамок и теней */
+.about-row,
+.about-center,
+.about-final {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Картинки — без подложки */
+.about-photo {
+  max-width: 45%;
+  height: auto;
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* Подложка — только у текста */
+.about-text {
+  flex: 1;
+  color: #1a4d8f;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Курсы: плашка-заголовок и документы без подложки */
+.about-courses { align-items: flex-start; }
+.courses-box { flex: 1; }
+.courses-box summary {
+  background: rgba(26, 77, 143, 0.9);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+.courses-box summary:hover { background: #143a6b; }
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+.docs-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* Фото по центру */
+.about-center { text-align: center; }
+.about-center .about-photo { max-width: 60%; }
+
+/* Финал: надпись и фото по центру */
+.about-final { text-align: center; }
+.about-motto {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1a4d8f;
+  margin-bottom: 0.8rem;
+}
+.about-final .about-photo { max-width: 55%; }
+
+@media (max-width: 800px) {
+  .about-row { flex-direction: column; }
+  .about-photo { max-width: 80%; }
+}
