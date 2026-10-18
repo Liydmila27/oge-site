@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Теория — Тренажёр ОГЭ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <header>
+    <span>Теория и примеры</span>
+    <nav>
+      <a href="main.html">Главная</a>
+      <a href="checklist.html">Чек-лист</a>
+      <button onclick="logout()">Выйти</button>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2 id="theory-title">Теория</h2>
+      <p class="theory-hint">Нажмите на синюю стрелочку, чтобы перейти к следующей странице.</p>
+
+      <img id="theory-img" class="theory-img" src="art/1/1/1/1(1).png" alt="Разбор задания">
+      <p class="img-error" id="img-error" style="display:none"></p>
+
+      <div class="theory-nav">
+        <img id="prev-btn" class="prev-btn" src="art/8.png" alt="Предыдущая страница">
+        <img id="next-btn" class="next-btn" src="art/7.png" alt="Следующая страница">
+      </div>
+
+
+      <p class="theory-counter" id="theory-counter"></p>
+      <button onclick="location.href='main.html'">Назад к заданиям</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+  <script src="codes.js"></script>
+  <script src="topics.js"></script>
+  <script src="theory.js"></script>
+  <script src="progress.js"></script>
+  <script src="theory_logic.js"></script>
+</body>
+</html>

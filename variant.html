@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Решение заданий — Тренажёр ОГЭ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <header>
+    <span>Решение заданий</span>
+    <nav>
+      <a href="main.html">Главная</a>
+      <a href="checklist.html">Чек-лист</a>
+      <button onclick="logout()">Выйти</button>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Решение заданий</h2>
+
+      <label class="variant-label" for="topic-select">Выбери тему:</label>
+      <select id="topic-select"></select>
+
+      <div id="task-box">
+        <p id="task-text"></p>
+        <img id="task-img" src="" alt="" style="display:none; max-width:100%;">
+      </div>
+
+      <input type="text" id="answer" class="oge-answer" maxlength="11"
+             placeholder="Ответ" autocomplete="off">
+
+      <div class="variant-buttons">
+        <button id="check-btn">Проверить</button>
+        <button id="next-btn-task">Следующая задача</button>
+        <a id="theory-link" href="theory.html">Теория по теме</a>
+      </div>
+
+      <p id="task-result"></p>
+      <p id="topic-score"></p>
+
+      <button onclick="location.href='main.html'">Назад к заданиям</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+  <script src="codes.js"></script>
+  <script src="topics.js"></script>
+  <script src="tasks1.js"></script>
+  <script src="progress.js"></script>
+  <script src="answer_cells.js"></script>
+  <script src="variant_logic.js"></script>
+</body>
+</html>

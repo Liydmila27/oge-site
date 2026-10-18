@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — Тренажёр ОГЭ по математике</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Декор: 6 картинок в разных частях фона -->
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <div class="login-page">
+
+    <!-- Левая часть: крупное изображение -->
+    <div class="login-image">
+      <img src="art/2.png" alt="Иллюстрация">
+    </div>
+
+    <!-- Правая часть: окно входа -->
+    <div class="auth-box">
+      <h1>Тренажёр ОГЭ по математике</h1>
+      <p>Введите кодовое слово, которое выдал учитель</p>
+      <input type="text" id="code-input" placeholder="Кодовое слово" autocomplete="off">
+      <button onclick="login()">Войти</button>
+      <p id="error" class="error"></p>
+    </div>
+
+  </div>
+
+  <script src="codes.js"></script>
+  <script src="auth.js"></script>
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+</body>
+</html>
