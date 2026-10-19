@@ -45,6 +45,11 @@ function findTopic(id, list) {
       const f = findTopic(id, t.children);
       if (f) return f;
     }
-  }
+  }// Подтемы теории вероятностей (открываются со страницы subtheory.html)
+const SUBTOPICS = {
+  "veroytnost_1": { id: "veroytnost_1", title: "Классическая теория вероятности" },
+  "veroytnost_2": { id: "veroytnost_2", title: "Круги Эйлера" },
+  "veroytnost_3": { id: "veroytnost_3", title: "Дерево случайных событий" }
+};
   return null;
 }
