@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Тренировка №19 — Тренажёр ОГЭ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <header>
+    <span>Тренировка №19</span>
+    <nav>
+      <a href="main.html">Главная</a>
+      <a href="theory.html">Теория</a>
+      <a href="variant.html">Вариант</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="about.html">Обо мне</a>
+      <button id="auth-btn">Войти</button>
+    </nav>
+  </header>
+
+  <main class="practice19-main">
+    <h2 class="topic-title">Верно или неверно?</h2>
+
+    <div id="card" class="card19">
+      <p id="st-text" class="st-text"></p>
+
+      <div class="answer-buttons">
+        <button id="btn-true"  class="btn-verdict btn-true">Верно</button>
+        <button id="btn-false" class="btn-verdict btn-false">Неверно</button>
+      </div>
+
+      <p id="feedback" class="feedback"></p>
+
+      <button id="btn-next" class="hidden">Следующее</button>
+    </div>
+
+    <div id="result" class="hidden">
+      <p class="result-text" id="result-text"></p>
+      <button onclick="startPractice()">Пройти ещё раз</button>
+      <button onclick="location.href='theory19.html'">К теории</button>
+    </div>
+
+    <p class="theory-hint" id="score-line"></p>
+  </main>
+
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+  <script src="access.js"></script>
+  <script src="statements19.js"></script>
+  <script>
+    let deck = [], idx = 0, correct = 0, wrong = 0;
+
+    function shuffle(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+    }
+
+    function updateScore() {
+      document.getElementById("score-line").textContent =
+        "Верно: " + correct + " · Неверно: " + wrong;
+    }
+
+    function showStatement() {
+      const s = deck[idx];
+      document.getElementById("st-text").textContent = s.text;
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("feedback").className = "feedback";
+      document.getElementById("btn-next").classList.add("hidden");
+      document.getElementById("btn-true").disabled = false;
+      document.getElementById("btn-false").disabled = false;
+    }
+
+    function answer(choice) {
+      const s = deck[idx];
+      const fb = document.getElementById("feedback");
+      document.getElementById("btn-true").disabled = true;
+      document.getElementById("btn-false").disabled = true;
+
+      if (choice === s.verdict) {
+        correct++;
+        fb.textContent = "Правильно!";
+        fb.className = "feedback ok";
+      } else {
+        wrong++;
+        fb.textContent = "Выбор неверен. Правильный ответ: " +
+          (s.verdict ? "верно" : "неверно") + ".";
+        fb.className = "feedback bad";
+      }
+      updateScore();
+      document.getElementById("btn-next").classList.remove("hidden");
+    }
+
+    function nextStatement() {
+      idx++;
+      if (idx >= deck.length) {
+        document.getElementById("card").classList.add("hidden");
+        document.getElementById("result").classList.remove("hidden");
+        document.getElementById("result-text").textContent =
+          "Готово! Правильных ответов: " + correct + " из " + deck.length + ".";
+        updateScore();
+        return;
+      }
+      showStatement();
+    }
+
+    function startPractice() {
+      deck = STATEMENTS19.slice();
+      shuffle(deck);
+      idx = 0; correct = 0; wrong = 0;
+      document.getElementById("card").classList.remove("hidden");
+      document.getElementById("result").classList.add("hidden");
+      updateScore();
+      showStatement();
+    }
+
+    document.getElementById("btn-true").onclick = () => answer(true);
+    document.getElementById("btn-false").onclick = () => answer(false);
+    document.getElementById("btn-next").onclick = nextStatement;
+    startPractice();
+  </script>
+
+</body>
+</html>
