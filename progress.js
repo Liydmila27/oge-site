@@ -6,12 +6,12 @@ function getCurrentCode() {
 
 function loadProgress() {
   const code = getCurrentCode();
-  if (!code) { location.href = "index.html"; return null; }
+  const key = PROGRESS_PREFIX + (code || "guest");
   let p;
-  try { p = JSON.parse(localStorage.getItem(PROGRESS_PREFIX + code)) || {}; }
+  try { p = JSON.parse(localStorage.getItem(key)) || {}; }
   catch (e) { p = {}; }
-  p.nick = p.nick || CODES[code] || "Ученик";
-  p.code = code;
+  p.nick = p.nick || (code ? (typeof CODES !== "undefined" && CODES[code]) || "Ученик" : "Гость");
+  p.code = code || "guest";
   p.results = p.results || {};
   return p;
 }
@@ -22,7 +22,6 @@ function saveProgress(p) {
 
 function addResult(taskId, taskIdx, score, attempts) {
   const p = loadProgress();
-  if (!p) return null;
   p.results[taskId] = p.results[taskId] || {};
   const prev = p.results[taskId][taskIdx];
   if (!prev || score > prev.score) {
@@ -48,9 +47,4 @@ function getAllProgresses() {
     }
   }
   return list;
-}
-
-function logout() {
-  localStorage.removeItem("oge-current-code");
-  location.href = "index.html";
 }
