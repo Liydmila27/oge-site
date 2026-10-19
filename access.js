@@ -1,25 +1,30 @@
-// Проверка доступа к заданиям. Теория этот файл НЕ подключает.
-const ACCESS_CODES = ["огэ2026", "математика"]; // кодовые слова, пиши маленькими буквами
+// Доступ к заданиям. Теория, главная и «Обо мне» открыты всем.
+const ACCESS_CODES = ["огэ2026", "математика"]; // маленькими буквами
 
-function accessGranted() {
+function isLogged() {
   return localStorage.getItem("oge_access") === "yes";
 }
 
+// Ставим на страницах с заданиями: не вошёл — отправляем на страницу входа
 function requireAccess() {
-  if (accessGranted()) return; // уже вошли — продолжаем
-
-  let ok = false;
-  while (!ok) {
-    const code = prompt("Введите кодовое слово (даёт учитель):");
-    if (code === null) { // нажали «Отмена» — на главную
-      location.href = "main.html";
-      return;
-    }
-    if (ACCESS_CODES.includes(code.trim().toLowerCase())) {
-      localStorage.setItem("oge_access", "yes");
-      ok = true;
-    } else {
-      alert("Неверный код. Обратитесь к учителю за кодовым словом.");
-    }
-  }
+  if (isLogged()) return;
+  location.href = "index.html";
 }
+
+function logout() {
+  localStorage.removeItem("oge_access");
+  location.href = "index.html";
+}
+
+// Кнопка «Войти»/«Выйти» в шапке
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("auth-btn");
+  if (!btn) return;
+  if (isLogged()) {
+    btn.textContent = "Выйти";
+    btn.onclick = logout;
+  } else {
+    btn.textContent = "Войти";
+    btn.onclick = () => { location.href = "index.html"; };
+  }
+});
