@@ -721,3 +721,42 @@ input.oge-answer-hidden {
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
+/* ===== Слайдер теории ===== */
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 900px;
+  margin: 0 auto 1rem;
+}
+.slider-stage { flex: 1; }
+.slide-img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+  min-height: 120px;
+}
+.slide-count {
+  text-align: center;
+  color: #1a4d8f;
+  margin-top: 0.4rem;
+}
+.slider-arrow {
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #1a4d8f;
+  color: #fff;
+  cursor: pointer;
+}
+.slider-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.slider-nav { text-align: center; }
