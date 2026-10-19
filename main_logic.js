@@ -24,9 +24,18 @@ function topicHTML(t) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const p = loadProgress();
-  if (!p) return;
-  document.getElementById("hello").textContent = "Привет, " + p.nick + "!";
-  document.getElementById("topics-block").innerHTML =
-    TOPICS.map(topicHTML).join("");
-  renderRating("rating-block");
+
+  const hello = document.getElementById("hello");
+  if (hello && p) {
+    hello.textContent = "Привет, " + p.nick + "!";
+  }
+
+  const block = document.getElementById("topics-block");
+  if (block) {
+    block.innerHTML = TOPICS.map(topicHTML).join("");
+  }
+
+  if (typeof renderRating === "function") {
+    renderRating("rating-block");
+  }
 });
