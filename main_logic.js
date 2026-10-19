@@ -6,9 +6,11 @@ function topicHTML(t) {
   if (t.children && t.children.length) {
     inner = t.children.map(topicHTML).join("");
   } else {
+    // Темы с флагом subpage ведут на отдельную страницу выбора раздела
+    const theoryPage = t.subpage ? "subtheory.html" : "theory.html";
     inner =
       "<div class='leaf-actions'>" +
-      "<button onclick=\"location.href='theory.html?topic=" + t.id + "'\">Теория и примеры</button>" +
+      "<button onclick=\"location.href='" + theoryPage + "?topic=" + t.id + "'\">Теория и примеры</button>" +
       "<button onclick=\"location.href='variant.html?topic=" + t.id + "'\">Решение случайного варианта</button>" +
       "</div>";
   }
