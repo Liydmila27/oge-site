@@ -13,6 +13,7 @@ function requireAccess() {
 
 function logout() {
   localStorage.removeItem("oge_access");
+  localStorage.removeItem("oge-current-code");
   location.href = "index.html";
 }
 
