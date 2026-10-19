@@ -668,3 +668,40 @@ input.oge-answer-hidden {
   .about-row { flex-direction: column; }
   .about-photo { max-width: 80%; }
 }
+/* ===== Страница выбора раздела теории ===== */
+.subtheory-main { text-align: center; }
+.subtheory-title {
+  color: #1a4d8f;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+}
+.choice-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  color: #1a4d8f;
+  font-weight: bold;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s;
+}
+.choice-card:hover { transform: scale(1.02); }
+.choice-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  background: transparent;
+}
+@media (max-width: 600px) {
+  .choice-card { flex-direction: column; text-align: center; }
+}
