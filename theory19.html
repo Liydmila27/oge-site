@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>№19. Анализ геометрических высказываний — Тренажёр ОГЭ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <header>
+    <span>Теория и примеры</span>
+    <nav>
+      <a href="main.html">Главная</a>
+      <a href="theory.html">Теория</a>
+      <a href="variant.html">Вариант</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="about.html">Обо мне</a>
+      <button id="auth-btn">Войти</button>
+    </nav>
+  </header>
+
+  <main class="theory-topic-main">
+    <h2 class="topic-title">№19. Анализ геометрических высказываний</h2>
+    <p class="theory-hint">Все высказывания по алфавиту. Зелёная пометка — верно, красная — неверно.</p>
+
+    <div id="st-list" class="st-list"></div>
+
+    <button onclick="location.href='practice19.html'">Потренироваться</button>
+    <button onclick="location.href='main.html'">Назад к заданиям</button>
+  </main>
+
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+  <script src="access.js"></script>
+  <script src="statements19.js"></script>
+  <script>
+    (function () {
+      const box = document.getElementById("st-list");
+
+      if (typeof STATEMENTS19 === "undefined") {
+        // statements19.js не подгрузился: либо файла нет, либо в нём ошибка
+        box.innerHTML =
+          "<p class='theory-hint'>Не нашла список высказываний (файл statements19.js).</p>" +
+          "<p class='theory-hint'>Проверь, что файл statements19.js лежит в репозитории рядом с theory19.html и загружен без ошибок.</p>";
+        return;
+      }
+
+      const sorted = STATEMENTS19.slice().sort(function (a, b) {
+        return a.text.localeCompare(b.text, "ru");
+      });
+
+      box.innerHTML = sorted.map(function (s) {
+        return "<div class='st-item'>" +
+          "<span class='st-text'>" + s.text + "</span>" +
+          "<span class='st-tag " + (s.verdict ? "st-true" : "st-false") + "'>" +
+          (s.verdict ? "верно" : "неверно") +
+          "</span>" +
+          "</div>";
+      }).join("");
+    })();
+  </script>
+
+</body>
+</html>
