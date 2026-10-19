@@ -33,9 +33,20 @@
   <main class="theory-topic-main">
     <h2 id="slides-title" class="topic-title"></h2>
 
-    <div id="slides" class="slides-box"></div>
+    <div id="slider" class="slider">
+      <button id="prev" class="slider-arrow" aria-label="Предыдущий слайд">‹</button>
 
-    <button onclick="location.href='subtheory.html?topic=10'">Назад к выбору раздела</button>
+      <div class="slider-stage">
+        <img id="slide-img" class="slide-img" src="" alt="">
+        <p id="slide-count" class="slide-count"></p>
+      </div>
+
+      <button id="next" class="slider-arrow" aria-label="Следующий слайд">›</button>
+    </div>
+
+    <div class="slider-nav">
+      <button id="btn-back">Назад к выбору раздела</button>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -48,27 +59,53 @@
     // Справочник подтем: где лежат слайды и сколько их
     const SLIDES = {
       "10_1": { title: "Классическая теория вероятности", dir: "12/11", from: 1, to: 26 },
-      "10_2": { title: "Круги Эйлера",                   dir: "12/12", from: 1, to: 0 },  // заполнишь позже
-      "10_3": { title: "Дерево случайных событий",        dir: "12/13", from: 1, to: 0 }   // заполнишь позже
+      "10_2": { title: "Круги Эйлера",                    dir: "12/12", from: 1, to: 0 },  // заполнишь позже
+      "10_3": { title: "Дерево случайных событий",         dir: "12/13", from: 1, to: 0 }   // заполнишь позже
     };
 
     const topic = new URLSearchParams(location.search).get("topic") || "10_1";
     const data = SLIDES[topic];
 
-    const box = document.getElementById("slides");
     if (!data || data.to < data.from) {
       document.getElementById("slides-title").textContent =
         data ? data.title : "Раздел в разработке";
-      box.innerHTML = "<p class='theory-hint'>Материалы скоро появятся.</p>";
+      document.getElementById("slider").classList.add("hidden");
+      document.querySelector(".slider-nav").innerHTML =
+        "<p class='theory-hint'>Материалы скоро появятся.</p>" +
+        "<button onclick=\"location.href='subtheory.html?topic=10'\">Назад к выбору раздела</button>";
     } else {
-      document.getElementById("slides-title").textContent = data.title;
-      for (let i = data.from; i <= data.to; i++) {
-        const img = document.createElement("img");
-        img.src = data.dir + "/Слайд" + i + ".png";
-        img.alt = "Слайд " + i;
-        img.className = "slide-img";
-        box.appendChild(img);
+      const total = data.to - data.from + 1;
+      let current = data.from;
+
+      const img = document.getElementById("slide-img");
+      const count = document.getElementById("slide-count");
+
+      function show(n) {
+        img.src = data.dir + "/Слайд" + n + ".png";
+        img.alt = "Слайд " + n;
+        count.textContent = "Слайд " + n + " из " + data.to;
+        document.getElementById("prev").disabled = (n === data.from);
+        document.getElementById("next").disabled = (n === data.to);
       }
+
+      document.getElementById("slides-title").textContent = data.title;
+
+      document.getElementById("prev").onclick = () => {
+        if (current > data.from) { current--; show(current); }
+      };
+      document.getElementById("next").onclick = () => {
+        if (current < data.to) { current++; show(current); }
+      };
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft")  document.getElementById("prev").click();
+        if (e.key === "ArrowRight") document.getElementById("next").click();
+      });
+
+      document.getElementById("btn-back").onclick =
+        () => location.href = "subtheory.html?topic=10";
+
+      show(current);
     }
   </script>
 
