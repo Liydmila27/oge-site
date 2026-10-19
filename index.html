@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
-  <title>  Вход — Тренажёр ОГЭ по математике</title>
+  <title>Вход — Тренажёр ОГЭ по математике</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,16 +33,40 @@
       <input type="text" id="code-input" placeholder="Кодовое слово" autocomplete="off">
       <button onclick="login()">Войти</button>
       <p id="error" class="error"></p>
+      <p class="login-back">Можно и без входа: <a href="main.html">на главную</a></p>
     </div>
 
   </div>
 
-  <script src="codes.js"></script>
-  <script src="auth.js"></script>
   <footer class="site-footer">
     <img src="art/6.png" alt="Фото создателя">
     <span>Создатель: Чертолыс Людмила Александровна</span>
   </footer>
+
+  <script src="access.js"></script>
+  <script>
+    function login() {
+      const input = document.getElementById("code-input").value;
+      const error = document.getElementById("error");
+
+      if (ACCESS_CODES.includes(input.trim().toLowerCase())) {
+        localStorage.setItem("oge_access", "yes");
+        location.href = "main.html";
+      } else {
+        error.textContent = "Неверный код. Проверьте и попробуйте ещё раз.";
+      }
+    }
+
+    // Вход по клавише Enter
+    document.getElementById("code-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") login();
+    });
+
+    // Если уже вошли — сразу на главную
+    if (localStorage.getItem("oge_access") === "yes") {
+      location.href = "main.html";
+    }
+  </script>
 
 </body>
 </html>
