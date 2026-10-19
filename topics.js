@@ -17,7 +17,7 @@ const TOPICS = [
   { id: "neravenstva-koord", title: "7. Числовые неравенства. Координатная прямая" },
   { id: "vychisleniya", title: "8. Вычисления" },
   { id: "uravneniya", title: "9. Уравнения" },
-  { id: "veroyatnosti", title: "10. Теория вероятностей" },
+ { id: 10, title: "Теория вероятностей", subpage: true },
   { id: "grafiki",    title: "11. Графики функций" },
   { id: "formuly",    title: "12. Расчёты по формулам" },
   { id: "sistemy-ner", title: "13. Неравенства, системы неравенств" },
