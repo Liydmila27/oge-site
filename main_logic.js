@@ -6,12 +6,14 @@ function topicHTML(t) {
   if (t.children && t.children.length) {
     inner = t.children.map(topicHTML).join("");
   } else {
-    // Темы с флагом subpage ведут на отдельную страницу выбора раздела
-    const theoryPage = t.subpage ? "subtheory.html" : "theory.html";
+    // Тема может задавать свои страницы теории и практики (theoryPage, variantPage).
+    // По умолчанию: subpage — развилка subtheory.html, иначе общая theory.html.
+    const theoryPage = t.theoryPage || (t.subpage ? "subtheory.html" : "theory.html");
+    const variantPage = t.variantPage || "variant.html";
     inner =
       "<div class='leaf-actions'>" +
       "<button onclick=\"location.href='" + theoryPage + "?topic=" + t.id + "'\">Теория и примеры</button>" +
-      "<button onclick=\"location.href='variant.html?topic=" + t.id + "'\">Решение случайного варианта</button>" +
+      "<button onclick=\"location.href='" + variantPage + "?topic=" + t.id + "'\">Решение случайного варианта</button>" +
       "</div>";
   }
   return (
