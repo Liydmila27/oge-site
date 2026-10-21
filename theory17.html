@@ -54,15 +54,14 @@
 
   <script src="access.js"></script>
   <script>
-    // Настройки темы №17: папка и диапазон слайдов
     const THEME = { title: "№17. Четырёхугольники", dir: "17", from: 1, to: 9 };
 
-    // Шаблоны имён — страница сама найдёт подходящий
     const PATTERNS = [
       function (dir, n) { return dir + "/Слайд" + n + ".PNG"; },
-      function (dir, n) { return dir + "/Слайд" + n + ".PNG".toLowerCase(); },
+      function (dir, n) { return dir + "/Слайд" + n + ".png"; },
       function (dir, n) { return dir + "/Слайд " + n + ".PNG"; },
       function (dir, n) { return dir + "/Слайд" + n + ".JPG"; },
+      function (dir, n) { return dir + "/Слайд" + n + ".jpg"; },
       function (dir, n) { return dir + "/" + n + ".png"; },
       function (dir, n) { return dir + "/Слайд" + n + ".png"; }
     ];
@@ -111,3 +110,23 @@
       document.getElementById("slider").classList.remove("hidden");
       statusBox.innerHTML =
         "<button id=\"btn-back\">Назад к списку теории</button>";
+      document.getElementById("btn-back").onclick =
+        () => location.href = "theory.html";
+
+      document.getElementById("prev").onclick = () => {
+        if (current > THEME.from) { current--; show(current); }
+      };
+      document.getElementById("next").onclick = () => {
+        if (current < THEME.to) { current++; show(current); }
+      };
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft")  document.getElementById("prev").click();
+        if (e.key === "ArrowRight") document.getElementById("next").click();
+      });
+
+      show(current);
+    });
+  </script>
+
+</body>
+</html>
