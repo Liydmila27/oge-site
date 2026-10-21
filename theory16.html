@@ -119,11 +119,12 @@
         document.getElementById("next").disabled = (n === THEME.to);
       }
 
-      document.getElementById("slider").classList.remove("hidden");
+            document.getElementById("slider").classList.remove("hidden");
       statusBox.innerHTML =
-        "<button id=\"btn-back\">Назад к списку теории</button>";
+        "<button id=\"btn-back\">На главную страницу</button>";
       document.getElementById("btn-back").onclick =
-        () => location.href = "theory.html";
+        () => location.href = "main.html";
+
 
       document.getElementById("prev").onclick = () => {
         if (current > THEME.from) { current--; show(current); }
