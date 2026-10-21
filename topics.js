@@ -24,7 +24,7 @@ const TOPICS = [
   { id: "progressii", title: "14. Задачи на прогрессии" },
   { id: "treugolnik", title: "15. Треугольник" },
   { id: "okruzhnost", title: "16. Окружность, круг и их элементы" },
-  { id: "chetyrehug", title: "17. Четырёхугольники" },
+  { id: "chetyrehug", title: "17. Четырёхугольники", theoryPage: "theory17.html", },
   { id: "reshetka",   title: "18. Фигуры на квадратной решётке" },
   { id: "vykazyvaniya", title: "№19. Анализ геометрических высказываний",
   theoryPage: "theory19.html", variantPage: "practice19.html" },
