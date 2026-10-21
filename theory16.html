@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>№16. Окружность, круг и их элементы — Тренажёр ОГЭ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="decor">
+    <img class="d1 big"   src="art/3.png" alt="">
+    <img class="d2 big"   src="art/4.png" alt="">
+    <img class="d3 big"   src="art/5.png" alt="">
+    <img class="d4 small" src="art/3.png" alt="">
+    <img class="d5 small" src="art/4.png" alt="">
+    <img class="d6 small" src="art/5.png" alt="">
+  </div>
+
+  <header>
+    <span>Теория и примеры</span>
+    <nav>
+      <a href="main.html">Главная</a>
+      <a href="theory.html">Теория</a>
+      <a href="variant.html">Вариант</a>
+      <a href="checklist.html">Чек-лист</a>
+      <a href="about.html">Обо мне</a>
+      <button id="auth-btn">Войти</button>
+    </nav>
+  </header>
+
+  <main class="theory-topic-main">
+    <h2 id="slides-title" class="topic-title"></h2>
+
+    <div id="slider" class="slider hidden">
+      <button id="prev" class="slider-arrow" aria-label="Предыдущий слайд">‹</button>
+
+      <div class="slider-stage">
+        <img id="slide-img" class="slide-img" src="" alt="">
+        <p id="slide-count" class="slide-count"></p>
+      </div>
+
+      <button id="next" class="slider-arrow" aria-label="Следующий слайд">›</button>
+    </div>
+
+    <div id="status" class="slider-nav"></div>
+  </main>
+
+  <footer class="site-footer">
+    <img src="art/6.png" alt="Фото создателя">
+    <span>Создатель: Чертолыс Людмила Александровна</span>
+  </footer>
+
+  <script src="access.js"></script>
+  <script>
+    // Настройки темы №16: папка и диапазон слайдов
+    const THEME = { title: "№16. Окружность, круг и их элементы", dir: "16", from: 1, to: 9 };
+
+    // Шаблоны имён — страница сама найдёт подходящий
+    const PATTERNS = [
+      function (dir, n) { return dir + "/" + n + ".png"; },
+      function (dir, n) { return dir + "/Слайд" + n + ".PNG"; },
+      function (dir, n) { return dir + "/Слайд" + n + ".png"; },
+      function (dir, n) { return dir + "/Слайд " + n + ".png"; },
+      function (dir, n) { return dir + "/Слайд" + n + ".JPG"; },
+      function (dir, n) { return dir + "/Слайд" + n + ".jpg"; }
+    ];
+
+    const statusBox = document.getElementById("status");
+    document.getElementById("slides-title").textContent = THEME.title;
+
+    function tryPath(url) {
+      return new Promise(resolve => {
+        const probe = new Image();
+        probe.onload = () => resolve(url);
+        probe.onerror = () => resolve(null);
+        probe.src = url;
+      });
+    }
+
+    async function findPattern() {
+      for (const p of PATTERNS) {
+        const ok = await tryPath(p(THEME.dir, THEME.from));
+        if (ok) return p;
+      }
+      return null;
+    }
+
+    findPattern().then(pattern => {
+      if (!pattern) {
+        statusBox.innerHTML =
+          "<p class='theory-hint'>Не нашла слайды ни по одному из привычных путей.</p>" +
+          "<p class='theory-hint'>Проверь на GitHub папку с картинками и имена файлов, потом обнови эту страницу.</p>" +
+          "<button onclick=\"location.href='theory.html'\">Назад к списку теории</button>";
+        return;
+      }
+
+      const img = document.getElementById("slide-img");
+      const count = document.getElementById("slide-count");
+      let current = THEME.from;
+
+      function show(n) {
+        img.src = pattern(THEME.dir, n);
+        img.alt = "Слайд " + n;
+        count.textContent = "Слайд " + n + " из " + THEME.to;
+        document.getElementById("prev").disabled = (n === THEME.from);
+        document.getElementById("next").disabled = (n === THEME.to);
+      }
+
+      document.getElementById("slider").classList.remove("hidden");
+      statusBox.innerHTML =
+        "<button id=\"btn-back\">Назад к списку теории</button>";
+      document.getElementById("btn-back").onclick =
+        () => location.href = "theory.html";
+
+      document.getElementById("prev").onclick = () => {
+        if (current > THEME.from) { current--; show(current); }
+      };
+      document.getElementById("next").onclick = () => {
+        if (current < THEME.to) { current++; show(current); }
+      };
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft")  document.getElementById("prev").click();
+        if (e.key === "ArrowRight") document.getElementById("next").click();
+      });
+
+      show(current);
+    });
+  </script>
+
+</body>
+</html>
