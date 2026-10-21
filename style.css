@@ -854,3 +854,10 @@ input.oge-answer-hidden {
 .slider-arrow:disabled { opacity: 0.35; cursor: default; }
 .slider-nav { text-align: center; }
 .hidden { display: none; }
+.theory-extra { text-align: center; margin-top: 30px; }
+.theory-extra-img {
+  max-width: 800px;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
