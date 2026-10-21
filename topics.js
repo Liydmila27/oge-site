@@ -1,3 +1,10 @@
+// Подтемы теории вероятностей (открываются со страницы subtheory.html)
+const SUBTOPICS = {
+  "veroytnost_1": { id: "veroytnost_1", title: "Классическая теория вероятности" },
+  "veroytnost_2": { id: "veroytnost_2", title: "Круги Эйлера" },
+  "veroytnost_3": { id: "veroytnost_3", title: "Дерево случайных событий" }
+};
+
 // Структура заданий ОГЭ. separator — жирный разделитель.
 const TOPICS = [
   {
@@ -17,17 +24,17 @@ const TOPICS = [
   { id: "neravenstva-koord", title: "7. Числовые неравенства. Координатная прямая" },
   { id: "vychisleniya", title: "8. Вычисления" },
   { id: "uravneniya", title: "9. Уравнения" },
- { id: "veroytnost", title: "10. Теория вероятностей", subpage: true },
+  { id: "veroytnost", title: "10. Теория вероятностей", subpage: true },
   { id: "grafiki",    title: "11. Графики функций" },
   { id: "formuly",    title: "12. Расчёты по формулам" },
   { id: "sistemy-ner", title: "13. Неравенства, системы неравенств" },
   { id: "progressii", title: "14. Задачи на прогрессии" },
   { id: "treugolnik", title: "15. Треугольник" },
   { id: "okruzhnost", title: "16. Окружность, круг и их элементы" },
- { id: "chetyrehug", title: "17. Четырёхугольники", theoryPage: "theory17.html" },
+  { id: "chetyrehug", title: "17. Четырёхугольники", theoryPage: "theory17.html" },
   { id: "reshetka",   title: "18. Фигуры на квадратной решётке" },
   { id: "vykazyvaniya", title: "19. Анализ геометрических высказываний",
-  theoryPage: "theory19.html", variantPage: "practice19.html" },
+    theoryPage: "theory19.html", variantPage: "practice19.html" },
   { separator: true, title: "Задания 20–25 с развёрнутым ответом" },
   { id: "vyrazheniya", title: "20. Алгебраические выражения, уравнения, системы уравнений, неравенства" },
   { id: "tekstovye",  title: "21. Текстовые задачи" },
@@ -46,11 +53,6 @@ function findTopic(id, list) {
       const f = findTopic(id, t.children);
       if (f) return f;
     }
-  }// Подтемы теории вероятностей (открываются со страницы subtheory.html)
-const SUBTOPICS = {
-  "veroytnost_1": { id: "veroytnost_1", title: "Классическая теория вероятности" },
-  "veroytnost_2": { id: "veroytnost_2", title: "Круги Эйлера" },
-  "veroytnost_3": { id: "veroytnost_3", title: "Дерево случайных событий" }
-};
+  }
   return null;
 }
