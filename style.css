@@ -861,3 +861,62 @@ input.oge-answer-hidden {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
+/* ---------- Подсказка под слайдами ---------- */
+.hint-card {
+  max-width: 640px;
+  margin: 36px auto 10px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.12);
+  overflow: hidden;
+}
+.hint-card[open] {
+  box-shadow: 0 10px 34px rgba(37, 99, 235, 0.18);
+}
+.hint-toggle {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: #2563eb;
+}
+.hint-toggle::-webkit-details-marker { display: none; }
+.hint-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  animation: hintPulse 1.8s ease-in-out infinite;
+}
+@keyframes hintPulse {
+  0%, 100% { transform: scale(1);     opacity: 1; }
+  50%      { transform: scale(1.35);  opacity: 0.55; }
+}
+.hint-chev {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.hint-card[open] .hint-chev {
+  transform: rotate(180deg);
+}
+.hint-body {
+  padding: 4px 20px 20px;
+  text-align: center;
+  animation: hintAppear 0.35s ease;
+}
+@keyframes hintAppear {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hint-img {
+  max-width: 560px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
