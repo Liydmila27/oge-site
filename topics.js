@@ -13,10 +13,10 @@ const TOPICS = [
     children: [
       { id: "dacha",    title: "1. Дачный участок" },
       { id: "mestnost", title: "2. План местности" },
-      { id: "kvartira", title: "3. Квартира" },
+      // { id: "kvartira", title: "3. Квартира" },
       { id: "bumaga",   title: "4. Листы бумаги" },
       { id: "pech",     title: "5. Печь для бани" },
-      { id: "tarify",   title: "6. Тарифы" },
+     // { id: "tarify",   title: "6. Тарифы" },
       { id: "shiny",    title: "7. Шины" }
     ]
   },
